@@ -1,0 +1,22 @@
+{% extends 'bflask.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+<div class="container mt-4">
+    <h1>UPDATE TO DO'S</h1>
+    <form action="/update/{{ todoproject.id }}" method="POST">
+         <div class="mb-3">
+            <label for="title" class="form-label">To Do Title</label>
+            <input type="text" class="form-control" name="title"  id="title" value="{{todoproject.title}}" required>
+        </div>
+        <div class="mb-3">
+            <label for="desc" class="form-label">To Do Description</label>
+            <input type="text" class="form-control" name="desc" id="desc" value="{{todoproject.desc}}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">UPDATE</button>
+    </form>
+</div>
+
+
+
+{% endblock %}
