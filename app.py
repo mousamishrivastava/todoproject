@@ -3,8 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-# ✅ Use pymysql instead of default MySQLdb
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:popo@localhost/todoproject"
+# ✅ SQLite DB URI
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///todoproject.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -52,7 +52,6 @@ def update(id):
 
 # ✅ Run the app
 if __name__ == "__main__":
-    # Create DB tables if not already present
     with app.app_context():
         db.create_all()
 
