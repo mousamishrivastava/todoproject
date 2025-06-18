@@ -15,6 +15,10 @@ class Todo(db.Model):
     title = db.Column(db.String(100), nullable=False)
     description = db.Column(db.String(200), nullable=False)
 
+# ✅ Create tables on app start (Render needs this)
+with app.app_context():
+    db.create_all()
+
 # ✅ Home Route
 @app.route('/', methods=["GET", "POST"])
 def hello_world():
@@ -50,9 +54,6 @@ def update(id):
 
     return render_template('update.html', todoproject=todo)
 
-# ✅ Run the app
+# ✅ Run the app locally
 if __name__ == "__main__":
-    with app.app_context():
-        db.create_all()
-
     app.run(debug=True, port=7000)
